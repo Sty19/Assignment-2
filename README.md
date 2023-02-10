@@ -12,6 +12,9 @@ Feature 2 - Hamburger menu to navigate to different pages
 ## Features Left to implement
 - Make it so that after filling up their contact details, it will send an email.
 
+## Link
+https://https//github.com/Sty19/Vectr.
+
 
 ## Credits
 ### Media

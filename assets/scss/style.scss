@@ -13,8 +13,100 @@
     margin: 0 auto;
     padding-left: 128px;
     padding-right: 128px;
+
+    /* For iPad size */
+    @media (max-width: 1024px) {
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+
+    /* For iPhone size */
+    @media (max-width: 767px) {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
 }
 
+/* Mobile navigation bar */
+.hamburger {
+    position: relative;
+    display: block;
+    width: 35px;
+    cursor: pointer;
+
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.hamburger .bar, .hamburger:after, .hamburger:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #FFF;
+    margin: 6px 0px;
+    transition: 0.4s;
+}
+
+.hamburger.is-active:before {
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+
+.hamburger.is-active:after {
+    transform: rotate(45deg) translate(-9px, -8px);
+}
+
+.hamburger.is-active .bar {
+    opacity: 0;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: block;
+    z-index: 98;
+    background-color: #442b6b;
+    padding-top: 120px;
+    transition: 0.4s;
+
+    a {
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto 16px;
+        text-align: center;
+        padding: 12px 16px;
+        background-color: #af6091;
+
+        color: #FFF;
+        text-decoration: none;
+    }
+}
+
+.mobile-nav.is-active {
+    left: 0;
+}
+
+.mobile-nav a:hover {
+    background-color: #b3779c;
+}
+
+@media (min-width: 767px) {
+    .mobile-nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}
+
+/* Beginning of content for website */
 section {   
     h2 {
         text-align: center;
@@ -27,14 +119,25 @@ section {
 }
 
 .button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    
     display: inline-block;
     color: #2f2f2f;
+    font-size: 14px;
     background-color: #FF9FDb;
     padding: 12px 16px;
     border-radius: 8px;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 700;
+    cursor: pointer;
+
+    @media(max-width: 767px) {
+        font-size: 18px;
+    }
 }
 
 img {
@@ -54,6 +157,7 @@ header {
         padding-bottom: 32px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         h2 {
             color: inherit;
@@ -71,11 +175,24 @@ header {
             grid-gap: 16px;
             grid-template-columns: repeat(4, auto);
 
+            @media (max-width: 767px) {
+                display: none;
+            }
+
             a {
                 color: inherit;
                 font-size: 20px;
                 text-decoration: none;
             }
+        }
+    }
+
+    &.is-scrolling {
+        background-color: #313131;
+
+        .container {
+            padding-top: 16px;
+            padding-bottom: 16px;
         }
     }
 }
@@ -87,10 +204,7 @@ main {
         display: flex;
         align-items: center;
 
-        /* Adjust baesd on actual image used */
-        background-image: url('assets\images\SQ1.jpeg');
-        background-position: center;       
-        background-size: cover;
+        background-image: url('../images/stussyphotoshoot.jpg');
         
         &:after {
             content: '';
@@ -102,7 +216,7 @@ main {
             bottom: 0;
             z-index: 0;
             background-color: #442b6b;
-            opacity: 0.8;
+            opacity: 0.3;
         }
 
         .container {
@@ -112,9 +226,14 @@ main {
             h1 {
                 font-size: 72px;
                 margin-bottom: 32px;
+                color: #FFF;
 
                 span {
                     color: #FF9FDb;
+                }
+
+                @media (max-width: 767px) {
+                    font-size: 32px;
                 }
             }
 
@@ -122,6 +241,11 @@ main {
                 font-size: 32px;
                 font-weight: 400;
                 margin-bottom: 32px;
+                color: #FFF;
+
+                @media (max-width: 767px) {
+                    font-size: 20px;
+                }
             }
         }
     }
@@ -137,6 +261,14 @@ main {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 grid-gap: 16px;
+
+                @media (max-width:1024px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media(max-width: 767px) {
+                    grid-template-columns: 1fr;
+                }
 
                 .service {
                     background-color: #FFF;
@@ -165,5 +297,214 @@ main {
         }
     }
     .projects {
+        padding-top: 64px;
+        padding-bottom: 64px;
+
+        button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto 16px;
+            text-align: center;
+            padding: 12px 16px;
+            background-color: #af6091;
+    
+            color: #FFF;
+            text-decoration: none;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 16px;
+            margin-bottom: 32px;
+
+            /* For smaller iPad size */
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* For iPhone size */
+            @media(max-width: 767px) {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
+                background-image: url('../images/essentials.png');
+                border-radius: 16px;
+                overflow: hidden;
+
+                &:nth-child(2) {
+                    background-image: url('../images/adlvteddy.png');
+                }
+
+                &:nth-child(3) {
+                    background-image: url('../images/adlvwhite.png');
+                }
+
+                &:nth-child(4) {
+                    background-image: url('../images/OWArrow.png');
+                }
+
+                &:nth-child(5) {
+                    background-image: url('../images/OWSimpsons.png');
+                }
+
+                &:nth-child(6) {
+                    background-image: url('../images/assc.png');
+                }
+
+                .content {
+                    opacity:0;
+                    color: #FFF;
+                    padding: 16px;
+                    background-color: rgba(64, 39, 68, 0.8);
+                    transition: 0.4s;
+
+                    h3 {
+                        font-size: 32px;
+                        margin-bottom: 16px;
+
+                        @media (max-width:1024px) {
+                            font-size: 28px;
+                        }
+                    }
+
+                    p {
+                        font-size: 18px;
+                        margin-bottom: 16px;
+
+                        @media (max-width:1024px) {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            
+                &:hover {
+                    .content {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .center {
+            text-align: center;
+        }
+    }
+
+
+/* Contact form */
+    .contact {
+        background-color: #b3779c;
+
+        .container {
+            padding-top: 64px;
+            padding-bottom: 64px;
+            h2 {
+                color: #FFF;
+            }
+
+            form {
+                display: block;
+                margin: 0 auto;
+                max-width: 680px;
+
+                .form-grid {
+                    display: grid;
+                    grid-gap: 16px;
+                    grid-template-columns: repeat(2, 1fr);
+                    margin-bottom: 16px;
+
+                    @media(max-width: 767px) {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .form-element, .form-area {
+                        appearance: none;
+                        border: none;
+                        outline: none;
+                        background: none;
+
+                        display: block;
+                        width: 100%;
+                        background-color: #FFF;
+                        border-radius: 8px;
+
+                        padding: 16px;
+                        font-size: 20px;
+                        color: #313131;
+
+                        /* Placeholder colour to distinguish between form field and any information entered */
+                        &:placeholder {
+                            color: #AAA;
+                        }
+                    }
+
+                    .form-area {
+                        grid-column: 1/-1;
+                    }
+                }
+
+                .right-align {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+.payment{
+    width: 500px;
+    height: 530px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 10px 50px;
+    display: none;
+    flex-direction: column;
+    -webkit-box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.3);
+}
+
+.payTitle{
+    font-size: 20px;
+    color: gray;
+}
+
+
+.payInput{
+    padding: 10px;
+    margin: 10px 0px;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.payInput::placeholder{
+    color: gray;
+}
+
+.cardIcons{
+    display: flex;
+}
+.cardIcon{
+    margin-right: 10px;
+}
+.cardInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sm{
+    width: 30%;
+}
+
+
+@media (max-width: 767px) {
+    .hide-mob {
+        display: none;
     }
 }
